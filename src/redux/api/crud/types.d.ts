@@ -16,6 +16,18 @@ export namespace CRUD {
 		firstName: string;
 		lastName: string;
 	}[];
+	type EditCrudRequest = {
+		_id?: number;
+		updateData: {
+			firstName: string;
+			lastName: string;
+		};
+	};
+	type EditCrudResponse = {
+		_id?: number;
+		firstName: string;
+		lastName: string;
+	}[];
 	type DeleteCrudRequest = number;
 	type DeleteCrudResponse = {
 		_id?: number;

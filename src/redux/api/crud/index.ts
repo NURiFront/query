@@ -22,6 +22,14 @@ const api = index.injectEndpoints({
 			}),
 			invalidatesTags: ["crud"],
 		}),
+		editTodo: builder.mutation<CRUD.EditCrudResponse, CRUD.EditCrudRequest>({
+			query: ({ _id, updateData }) => ({
+				url: `${_id}`,
+				method: "PATCH",
+				body: updateData,
+			}),
+			invalidatesTags: ["crud"],
+		}),
 		deleteTodo: builder.mutation<
 			CRUD.DeleteCrudResponse,
 			CRUD.DeleteCrudRequest
@@ -32,12 +40,13 @@ const api = index.injectEndpoints({
 			}),
 			invalidatesTags: ["crud"],
 		}),
+
 		deleteAll: builder.mutation<
 			CRUD.DeleteAllCrudResponse,
 			CRUD.DeleteAllCrudRequest
 		>({
 			query: () => ({
-				url: '',
+				url: "",
 				method: "DELETE",
 			}),
 			invalidatesTags: ["crud"],
@@ -47,6 +56,7 @@ const api = index.injectEndpoints({
 export const {
 	useGetTodosQuery,
 	useCreateTodoMutation,
+	useEditTodoMutation,
 	useDeleteTodoMutation,
 	useDeleteAllMutation,
 } = api;
